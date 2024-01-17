@@ -7,7 +7,7 @@
             <div class="wizard-container">
 
                 <div class="wizard-card ct-wizard-orange" id="wizardProperty">
-                    <form action="{% url 'post_create' %}" method="POST">
+                    <form action="{% url 'post_create' %}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="wizard-header">
                             <h3>
@@ -34,7 +34,7 @@
                                             <div class="picture">
                                                 <img src="{% static 'assets/img/default-image.png' %}" class="picture-src"
                                                     id="wizardPicturePreview" title="" />
-                                                <input type="file" id="wizard-picture">
+                                                <input type="file" id="wizard-picture" name="image1">
                                             </div>
                                         </div>
                                     </div>
@@ -68,7 +68,7 @@
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <label>Property Category :</label>
-                                                <select id="basic" class="selectpicker show-tick form-control">
+                                                <select id="basic" class="selectpicker show-tick form-control" name="category">
                                                     <option> - Posting For - </option>
                                                     <option>Rent</option>
                                                     <option>Sale</option>
@@ -80,7 +80,7 @@
                                             <div class="form-group">
                                                 <label>Property District :</label>
                                                 <select id="lunchBegins" class="selectpicker" data-live-search="true"
-                                                    data-live-search-style="begins" title="Select your city">
+                                                    data-live-search-style="begins" title="Select your city" name="district">
                                                     <option>Seoul</option>
                                                     <option>Paris</option>
                                                     <option>Casablanca</option>
@@ -94,7 +94,7 @@
                                             <div class="form-group">
                                                 <label>Property City :</label>
                                                 <select id="lunchBegins" class="selectpicker" data-live-search="true"
-                                                    data-live-search-style="begins" title="Select your city">
+                                                    data-live-search-style="begins" title="Select your city" name="city">
                                                     <option>New york, CA</option>
                                                     <option>Paris</option>
                                                     <option>Casablanca</option>
@@ -107,7 +107,7 @@
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <label>Property Location :</label>
-                                                <input class="form-control" type="text" name="property-location">
+                                                <input class="form-control" type="text" name="location-name" placeholder="03 Mahendrapul">
                                             </div>
                                         </div>
                                         
@@ -119,20 +119,27 @@
                             <!-- End step 2 -->
 
                             <div class="tab-pane" id="step3">
-                                <h4 class="info-text">Give us somme images and videos ? </h4>
+                                <h4 class="info-text">Upload more images </h4>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="property-images">Chose Images :</label>
-                                            <input class="form-control" type="file" id="property-images">
-                                            <p class="help-block">Select multipel images for your property .</p>
+                                            <input class="form-control" type="file" name="image2">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="property-images">Chose Images :</label>
+                                            <input class="form-control" type="file" name="image3">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="property-images">Chose Images :</label>
+                                            <input class="form-control" type="file" name="image4">
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label>Property Description :</label>
-                                                <textarea name="description" class="form-control"></textarea>
+                                                <textarea name="description" class="form-control" required></textarea>
                                             </div>
                                         </div>
                                     </div>

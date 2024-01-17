@@ -33,6 +33,10 @@
             <ul class="main-nav nav navbar-nav navbar-right">
                 <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="/">Home</a></li>
                 <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="{% url 'post_list' %}">Property</a></li>
+                
+                {% if request.user.is_authenticated %}
+                <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="{% url 'post_create' %}">Advertise Property</a></li>
+                {% endif %}
 
                 <!-- <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li> -->
             </ul>
