@@ -4,7 +4,8 @@ from .models import Category, Post, PostImage
 class PostView(View):
 
     def get(self, request):
-        return render(request, 'posts/posts-list.html')
+        posts = Post.objects.all()
+        return render(request, 'posts/posts-list.html', {'posts': posts})
     
 
 class PostCreateView(View):
