@@ -21,17 +21,17 @@
                             </div> 
 
                             <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                                <li data-thumb="assets/img/property-1/property1.jpg"> 
-                                    <img src="assets/img/property-1/property1.jpg" />
+                                <li data-thumb="/static/assets/img/property-1/property1.jpg"> 
+                                    <img src="/static/assets/img/property-1/property1.jpg" />
                                 </li>
-                                <li data-thumb="assets/img/property-1/property2.jpg"> 
-                                    <img src="assets/img/property-1/property3.jpg" />
+                                <li data-thumb="/static/assets/img/property-1/property2.jpg"> 
+                                    <img src="/static/assets/img/property-1/property3.jpg" />
                                 </li>
-                                <li data-thumb="assets/img/property-1/property3.jpg"> 
-                                    <img src="assets/img/property-1/property3.jpg" />
+                                <li data-thumb="/static/assets/img/property-1/property3.jpg"> 
+                                    <img src="/static/assets/img/property-1/property3.jpg" />
                                 </li>
-                                <li data-thumb="assets/img/property-1/property4.jpg"> 
-                                    <img src="assets/img/property-1/property4.jpg" />
+                                <li data-thumb="/static/assets/img/property-1/property4.jpg"> 
+                                    <img src="/static/assets/img/property-1/property4.jpg" />
                                 </li>                                         
                             </ul>
                         </div>
@@ -40,8 +40,8 @@
 
                 <div class="single-property-wrapper">
                     <div class="single-property-header">                                          
-                        <h1 class="property-title pull-left">Villa in Coral Gables</h1>
-                        <span class="property-price pull-right">$825,000</span>
+                        <h1 class="property-title pull-left">{{post.title}}</h1>
+                        <span class="property-price pull-right">{{post.price}}</span>
                     </div>
 
                     <div class="property-meta entry-meta clearfix ">   
@@ -52,7 +52,7 @@
                             </span>
                             <span class="property-info-entry">
                                 <span class="property-info-label">Status</span>
-                                <span class="property-info-value">For Sale</span>
+                                <span class="property-info-value">{{post.category.category_name}}</span>
                             </span>
                         </div>
 
@@ -76,45 +76,6 @@
                             </span>
                         </div>
 
-                        <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
-                            <span class="property-info-icon icon-bed">
-                                <img src="assets/img/icon/cars-orange.png">
-                            </span>
-                            <span class="property-info-entry">
-                                <span class="property-info-label">Car garages</span>
-                                <span class="property-info-value">1</span>
-                            </span>
-                        </div>
-
-                        <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
-                            <span class="property-info-icon icon-bath">
-                                <img src="assets/img/icon/os-orange.png">
-                            </span>
-                            <span class="property-info-entry">
-                                <span class="property-info-label">Bathrooms</span>
-                                <span class="property-info-value">3.5</span>
-                            </span>
-                        </div>
-
-                        <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
-                            <span class="property-info-icon icon-garage">
-                                <img src="assets/img/icon/room-orange.png">
-                            </span>
-                            <span class="property-info-entry">
-                                <span class="property-info-label">Garages</span>
-                                <span class="property-info-value">2</span>
-                            </span>
-                        </div>
-                        
-                        <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
-                            <span class="property-info-icon icon-garage">
-                                <img src="assets/img/icon/shawer-orange.png">
-                            </span>
-                            <span class="property-info-entry">
-                                <span class="property-info-label">Garages</span>
-                                <span class="property-info-value">2</span>
-                            </span>
-                        </div>
 
 
                     </div>
@@ -123,7 +84,7 @@
                     <div class="section">
                         <h4 class="s-property-title">Description</h4>
                         <div class="s-property-content">
-                            <p>Nulla quis dapibus nisl. Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies                                </p>
+                            <p>{{post.description}}</p>
                         </div>
                     </div>
                     <!-- End description area  -->

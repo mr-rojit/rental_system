@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import View
 from .models import Category, Post, PostImage
 class PostView(View):
@@ -7,6 +7,11 @@ class PostView(View):
         posts = Post.objects.all()
         return render(request, 'posts/posts-list.html', {'posts': posts})
     
+class PostDetailView(View):
+
+    def get(self, request, pk):
+        post = get_object_or_404(Post, pk=pk)
+        return render(request, 'posts/posts-detail.html', {'post': post})
 
 class PostCreateView(View):
 
