@@ -49,7 +49,7 @@
 
 
                             <div class="item-entry overflow">
-                                <h5><a href=""> {{post.title}} </a></h5>
+                                <h5><a href="{% url 'post_detail' post.pk %}"> {{post.title}} </a></h5>
                                 <div class="dot-hr"></div>
                                 <span class="pull-left"><b> Area :</b> 120m </span>
                                 <span class="proerty-price pull-right"> ${{post.price}}</span>
