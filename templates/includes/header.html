@@ -36,6 +36,8 @@
                 
                 {% if request.user.is_authenticated %}
                 <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="{% url 'post_create' %}">Advertise Property</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="{% url 'chat_home' %}"><span class="fa fa-comments fa-lg"></span></a></li>
+
                 {% endif %}
 
                 <!-- <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li> -->
