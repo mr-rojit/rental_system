@@ -44,7 +44,9 @@
                         <div class="box-two proerty-item">
                             
                             <div class="item-thumb">
-                                <a href="property-1.html" ><img src="{{post.postimage_set.first.url}}"></a>
+                                {% with post.postimage_set.all|first as img %}
+                                    <img src="{{img.picture.url}}">
+                                {% endwith %}
                             </div>
 
 

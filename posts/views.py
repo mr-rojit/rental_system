@@ -19,7 +19,6 @@ class PostCreateView(View):
         return render(request, 'posts/posts-create.html')
     
     def post(self,request):
-        print(request.POST)
         category = request.POST.get('category', '')
         title = request.POST.get('title', '')
         description = request.POST.get('description', '')
@@ -31,7 +30,7 @@ class PostCreateView(View):
         cat = Category.objects.get(category_name__iexact=category)
         post = Post.objects.create(category=cat, title=title, description=description,
                              district=district, property_area='', city =city, location_name=location,
-                             price=price
+                             price=price, user=request.user
                              )
         
         img1 = request.FILES.get('image1', '')
