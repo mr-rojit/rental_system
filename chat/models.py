@@ -3,13 +3,13 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-
 class Channel(models.Model):
     user_one = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_one')
     user_two = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_two')
+    updated_at = models.DateTimeField(null=True)
 
     def __str__(self):
-        return 'A challenl'
+        return 'A channel'
 
 
 class Chat(models.Model):
@@ -21,4 +21,3 @@ class Chat(models.Model):
 
     def __str__(self):
         return self.message
-
