@@ -11,23 +11,24 @@
   <div class="container bootstrap snippets bootdey">
     <div class="row">
       <div class="col-md-4 bg-white">
-        <div class="row border-bottom padding-sm" style="height: 40px">
-          Member
-        </div>
 
         <ul class="friend-list">
-          {% for channel in channels %}
-          <li class="active bounceInDown">
-            <a href="{% url 'chat_people' channel.channel_id %}" class="clearfix">
-              <img src="https://bootdey.com/img/Content/user_1.jpg" alt class="img-circle" />
-              <div class="friend-name">
-                <strong>{{channel.other_user.first_name}} {{channel.other_user.last_name}}</strong>
-              </div>
-              <div class="last-message text-muted">Hello, Are you there?</div>
-              <small class="time text-muted">Just now</small>
-            </a>
-          </li>
-          {% endfor %}
+          {% if channels %}
+            {% for channel in channels %}
+            <li class="active bounceInDown">
+              <a href="{% url 'chat_people' channel.channel_id %}" class="clearfix">
+                <img src="https://bootdey.com/img/Content/user_1.jpg" alt class="img-circle" />
+                <div class="friend-name">
+                  <strong>{{channel.other_user.first_name}} {{channel.other_user.last_name}}</strong>
+                </div>
+                <div class="last-message text-muted">Hello, Are you there?</div>
+                <small class="time text-muted">Just now</small>
+              </a>
+            </li>
+            {% endfor %}
+            {% else %}
+            <h2>You have no messages</h2>
+          {% endif %}
         </ul>
       </div>
 
@@ -36,28 +37,28 @@
           <ul class="chat">
             {% for c in chats %}
             {% if c.message_from == request.user %}
-            <li class="left clearfix">
-              <span class="chat-img pull-left">
-                <img src="https://bootdey.com/img/Content/user_3.jpg" alt="User Avatar" />
+
+            <li class="right clearfix">
+              <span class="chat-img pull-right">
+                
               </span>
               <div class="chat-body clearfix">
                 <div class="header">
                   <strong class="primary-font">YOU</strong>
+                  &nbsp;
                   <small class="pull-right text-muted"><i class="fa fa-clock-o"></i>{{c.created_at}}</small>
                 </div>
                 <p>{{c.message}}</p>
               </div>
             </li>
             {% else %}
-            <li class="right clearfix">
-              <span class="chat-img pull-right">
-                <img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar" />
+            <li class="left clearfix">
+              <span class="chat-img pull-left">
+                
               </span>
               <div class="chat-body clearfix">
                 <div class="header">
                   <strong class="primary-font">{{c.message_from.first_name}} {{c.message_from.last_name}}</strong>
-                  &nbsp;
-                  <small class="pull-right text-muted"><i class="fa fa-clock-o"></i>{{c.created_at}}</small>
                 </div>
                 <p>{{c.message}}</p>
               </div>
@@ -66,12 +67,14 @@
             {% endfor %}
           </ul>
         </div>
+        {% if channels %}
         <div class="chat-box bg-white">
           <form action="{% url 'send_chat' %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="channel_id" value="{{request.path}}">
             <div class="input-group">
-              <input name="message" class="form-control border no-shadow no-rounded" placeholder="Type your message here" />
+              <input name="message" class="form-control border no-shadow no-rounded"
+                placeholder="Type your message here" />
               <span class="input-group-btn">
                 <button class="btn btn-success no-rounded" type="submit">
                   Send
@@ -80,6 +83,7 @@
             </div>
           </form>
         </div>
+        {% endif %}
       </div>
     </div>
   </div>

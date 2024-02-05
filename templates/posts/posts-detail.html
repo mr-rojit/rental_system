@@ -162,8 +162,9 @@
                                         <li><i class="pe-7s-map-marker strong"> </i> 9089 your adress her</li>
                                         <li><i class="pe-7s-mail strong"> </i> email@yourcompany.com</li>
                                         <li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
-                                        <li><a href="/chat/{{post.user.pk}}"> Chat</a></li>
-
+                                        {% if request.user != post.user %}
+                                        <li><a href="{% url 'check_chat' post.user.pk %}"> Message</a></li>
+                                        {% endif %}
                                     </ul>
                                     <p>Duis mollis  blandit tempus porttitor curabiturDuis mollis  blandit tempus porttitor curabitur , est non…</p>
                                 </div>
