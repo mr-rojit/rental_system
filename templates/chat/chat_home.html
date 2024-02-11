@@ -17,7 +17,7 @@
             {% for channel in channels %}
             <li class="active bounceInDown">
               <a href="{% url 'chat_people' channel.channel_id %}" class="clearfix">
-                <img src="https://bootdey.com/img/Content/user_1.jpg" alt class="img-circle" />
+                <img src="{% static 'assets/img/user.png' %}" alt="logo" style="max-width: 50px; max-height: 50px;">
                 <div class="friend-name">
                   <strong>{{channel.other_user.first_name}} {{channel.other_user.last_name}}</strong>
                 </div>
