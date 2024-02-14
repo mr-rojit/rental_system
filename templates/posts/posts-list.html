@@ -7,31 +7,26 @@
         <div class="row  pr0 padding-top-40 properties-page">
             <div class="col-md-12 padding-bottom-40 large-search"> 
                 <div class="search-form wow pulse">
-                    <form action="" class=" form-inline">
+                    <form action="{% url 'post_list' %}" class="form-inline">
                         <div class="col-md-12">
                             <div class="col-md-4">
-                                <input type="text" class="form-control" placeholder="Key word">
+                                <input type="text" class="form-control" placeholder="Key word" name="keyword">
                             </div>
-                            <div class="col-md-4">                                   
-                                <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your city">
-                                    <option>New york, CA</option>
-                                    <option>Paris</option>
-                                    <option>Casablanca</option>
-                                    <option>Tokyo</option>
-                                    <option>Marraekch</option>
-                                    <option>kyoto , shibua</option>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" placeholder="city" name="city">
+                            </div>
+                            <div class="col-md-2">                                     
+                                <select id="basic" class="selectpicker show-tick form-control" class="category" name="cat">
+                                    <option value="rent" selected>Rent </option>
+                                    <option value="sale">Sale</option>
+                                    <option value="lease">Lease</option>  
                                 </select>
                             </div>
-                            <div class="col-md-4">                                     
-                                <select id="basic" class="selectpicker show-tick form-control">
-                                    <option> -Status- </option>
-                                    <option>Rent </option>
-                                    <option>Boy</option>
-                                    <option>used</option>  
+                            <div class="col-md-2">
+                                <input type="submit" class="btn btn-primary" value="search">
+                            </div>
+                        </div>
 
-                                </select>
-                            </div>
-                        </div>                    
                     </form>
                 </div>
             </div>

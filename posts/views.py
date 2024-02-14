@@ -1,11 +1,19 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from .models import Category, Post, PostImage
+from django.db.models import Q
 class PostView(View):
 
     def get(self, request):
-        posts = Post.objects.all()
-        return render(request, 'posts/posts-list.html', {'posts': posts})
+        queryset = Post.objects.all()
+        keyword = self.request.GET.get('keyword')
+        city = self.request.GET.get('city')
+        cat = self.request.GET.get('cat')
+        if keyword:
+            queryset = queryset.filter(Q(title__icontains=keyword) | Q(title__icontains=keyword))
+        if city:
+            queryset = queryset.filter(city__icontains=city)
+        return render(request, 'posts/posts-list.html', {'posts': queryset})
     
 class PostDetailView(View):
 
