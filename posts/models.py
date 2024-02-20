@@ -18,6 +18,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.TextField()
     property_area = models.CharField(max_length=50)
@@ -25,7 +26,9 @@ class Post(models.Model):
     city = models.CharField(max_length=50)
     location_name = models.CharField(max_length=100)
     price = models.FloatField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    is_featured = models.BooleanField(default=False)
+    bathroom = models.IntegerField(default=1)
+    bedroom = models.IntegerField(default=1)
 
     def __str__(self):
         return self.title

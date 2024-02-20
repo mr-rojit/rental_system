@@ -34,7 +34,7 @@
                                             <div class="picture">
                                                 <img src="{% static 'assets/img/default-image.png' %}" class="picture-src"
                                                     id="wizardPicturePreview" title="" />
-                                                <input type="file" id="wizard-picture" name="image1">
+                                                <input type="file" id="wizard-picture" name="image1" required>
                                             </div>
                                         </div>
                                     </div>
@@ -42,13 +42,13 @@
                                         <div class="form-group">
                                             <label>Property name <small>(required)</small></label>
                                             <input name="title" type="text" class="form-control"
-                                                placeholder="Beautiful House for Sale ...">
+                                                placeholder="Beautiful House for Sale ..." required>
                                         </div>
 
                                         <div class="form-group">
                                             <label>Property price <small>(required)</small></label>
-                                            <input name="price" type="text" class="form-control"
-                                                placeholder="2500">
+                                            <input name="price" type="number" class="form-control"
+                                                placeholder="2500" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Telephone <small>(empty if you wanna use default phone
@@ -68,7 +68,7 @@
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <label>Property Category :</label>
-                                                <select id="basic" class="selectpicker show-tick form-control" name="category">
+                                                <select id="basic" class="selectpicker show-tick form-control" name="category" required>
                                                     <option> - Posting For - </option>
                                                     <option>Rent</option>
                                                     <option>Sale</option>
@@ -78,25 +78,45 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="form-group">
-                                                <label>Property Location :</label>
-                                                <input class="form-control" type="text" name="district" placeholder="Kathmandu">
+                                                <label>District Name :</label>
+                                                <input class="form-control" type="text" name="district" placeholder="Kathmandu" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label>City :</label>
+                                                <input class="form-control" type="text" name="city" placeholder="city name" required>
                                             </div>
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <label>Property Location :</label>
-                                                <input class="form-control" type="text" name="city" placeholder="Kathmandu">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <label>Property Location :</label>
-                                                <input class="form-control" type="text" name="location-name" placeholder="03 Mahendrapul">
+                                                <input class="form-control" type="text" name="location-name" placeholder="03 Mahendrapul" required>
                                             </div>
                                         </div>
                                         
                                     </div>
-                                    
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label>Bathroom Count :</label>
+                                                <input class="form-control" type="number" name="bathroom">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label>Bedroom Count :</label>
+                                                <input class="form-control" type="number" name="bedroom">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label>Property Area :</label>
+                                                <input class="form-control" type="text" name="property_area">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
                                     <br>
                                 </div>
                             </div>
@@ -148,7 +168,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--  End step 4 -->
 
                         </div>
 
