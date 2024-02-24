@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from posts.models import Post
 
 
 User = get_user_model()
@@ -48,5 +50,16 @@ def logout_view(request):
     logout(request)
     return redirect('/')
 
+@login_required(login_url='/auth/login/')
 def profile_view(request):
-    return render(request, 'auth/profile.html')
+    user = request.user
+    has_certificate = True if user.certificate else False
+        
+    posts = Post.objects.filter(user=user)
+    print(posts)
+    context = {
+        'posts': posts,
+        'user': user,
+        'has_certificate': has_certificate
+    }
+    return render(request, 'auth/profile.html', context=context)

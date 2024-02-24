@@ -48,6 +48,7 @@ class Account(AbstractUser):
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name", "last_name"]
+    certificate = models.FileField(upload_to='certificates/', null=True, blank=True)
 
     objects = AccountManager()
 
