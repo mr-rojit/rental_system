@@ -29,6 +29,7 @@ class Post(models.Model):
     is_featured = models.BooleanField(default=False)
     bathroom = models.IntegerField(default=1)
     bedroom = models.IntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title

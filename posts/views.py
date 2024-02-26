@@ -19,7 +19,8 @@ class PostDetailView(View):
 
     def get(self, request, pk):
         post = get_object_or_404(Post, pk=pk)
-        return render(request, 'posts/posts-detail.html', {'post': post})
+        similar_posts = Post.objects.filter(Q(id=post.pk), category=post.category)
+        return render(request, 'posts/posts-detail.html', {'post': post, 'similar': similar_posts   })
 
 class PostCreateView(View):
 
@@ -34,8 +35,10 @@ class PostCreateView(View):
         city = request.POST.get('city', '')
         location = request.POST.get('location-name', '')
         price = float(request.POST.get('price', ''))
-
-        cat = Category.objects.get(category_name__iexact=category)
+        try:
+            cat = Category.objects.get(category_name__iexact=category)
+        except Category.DoesNotExist:
+            cat = Category.objects.create(category_name=category.lower())
         post = Post.objects.create(category=cat, title=title, description=description,
                              district=district, property_area='', city =city, location_name=location,
                              price=price, user=request.user

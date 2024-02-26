@@ -63,3 +63,11 @@ def profile_view(request):
         'has_certificate': has_certificate
     }
     return render(request, 'auth/profile.html', context=context)
+
+@login_required(login_url='/auth/login/')
+def upload_certificate(request):
+    cert = request.FILES["certificate"]
+    user=request.user
+    user.certificate = cert
+    user.save()
+    return redirect('/auth/profile')
