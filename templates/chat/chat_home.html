@@ -2,6 +2,7 @@
 {% load static %}
 {% block custom_css %}
 <link rel="stylesheet" href="{% static 'assets/chat.css' %}" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 {% endblock %}
 {% block content %}
@@ -17,12 +18,13 @@
             {% for channel in channels %}
             <li class="active bounceInDown">
               <a href="{% url 'chat_people' channel.channel_id %}" class="clearfix">
-                <img src="{% static 'assets/img/user.png' %}" alt="logo" style="max-width: 50px; max-height: 50px;">
                 <div class="friend-name">
                   <strong>{{channel.other_user.first_name}} {{channel.other_user.last_name}}</strong>
+                  {% if channel.other_user.is_verified%}
+                  <span class="bi bi-patch-check" style="color: rgb(70, 195, 70);"></span>
+                  {% endif %}
                 </div>
-                <div class="last-message text-muted">Hello, Are you there?</div>
-                <small class="time text-muted">Just now</small>
+                <div class="last-message text-muted">Click to chat/view</div>
               </a>
             </li>
             {% endfor %}

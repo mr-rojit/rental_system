@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from posts.models import Post
+from .models import CertificateVerification
 
 
 User = get_user_model()
@@ -70,4 +71,6 @@ def upload_certificate(request):
     user=request.user
     user.certificate = cert
     user.save()
+    CertificateVerification.objects.create(user=user)
+
     return redirect('/auth/profile')

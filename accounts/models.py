@@ -3,6 +3,8 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import BaseUserManager
 from django.utils.translation import gettext_lazy as _
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class AccountManager(BaseUserManager):
@@ -38,7 +40,6 @@ class AccountManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
-
 class Account(AbstractUser):
 
     first_name = models.CharField(max_length=150)
@@ -49,9 +50,26 @@ class Account(AbstractUser):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name", "last_name"]
     certificate = models.FileField(upload_to='certificates/', null=True, blank=True)
+    is_verified = models.BooleanField(default=False)
 
     objects = AccountManager()
 
-
     def __str__(self):
         return self.email
+    
+class CertificateVerification(models.Model):
+    user = models.ForeignKey(Account, on_delete=models.CASCADE)
+    approved = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"User with email:{self.user.email}"
+
+
+@receiver(post_save, sender=CertificateVerification)
+def update_verification_status(sender, instance, **kwargs):
+    if instance.approved:
+        instance.user.is_verified = True
+        instance.user.save()
+    else:
+        instance.user.is_verified = False
+        instance.user.save()
