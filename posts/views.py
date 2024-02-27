@@ -19,7 +19,7 @@ class PostDetailView(View):
 
     def get(self, request, pk):
         post = get_object_or_404(Post, pk=pk)
-        similar_posts = Post.objects.filter(Q(id=post.pk), category=post.category)
+        similar_posts = Post.objects.filter(~Q(id=post.pk), category=post.category)
         return render(request, 'posts/posts-detail.html', {'post': post, 'similar': similar_posts   })
 
 class PostCreateView(View):
