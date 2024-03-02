@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <div class="container mb-4 main-container">
     <div class="row">
@@ -30,9 +31,14 @@
                     </div>
                     {% else %}
                     <div class="list-group-item">
+                        {% if user.is_verified %}
+                            <span class="text-success">Your Account is verified by admin.</span>
+                            <span class="bi bi-patch-check" style="color: rgb(76, 241, 76);"></span>
+                        {% else %}
                         <p>You have already uploaded the certificate. <br>
                             An admin will contact you if needed
                         </p>
+                        {% endif %}
                     </div>
                     {% endif %}
                 </nav>

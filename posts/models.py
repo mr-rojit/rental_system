@@ -30,6 +30,8 @@ class Post(models.Model):
     bathroom = models.IntegerField(default=1)
     bedroom = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
+    lat = models.FloatField(null=True, blank=True)
+    lng =  models.FloatField(null=True, blank=True)
 
     def __str__(self):
         return self.title

@@ -35,13 +35,15 @@ class PostCreateView(View):
         city = request.POST.get('city', '')
         location = request.POST.get('location-name', '')
         price = float(request.POST.get('price', ''))
+        lat = request.POST.get('lat', '')
+        lng = request.POST.get('lng', '')
         try:
             cat = Category.objects.get(category_name__iexact=category)
         except Category.DoesNotExist:
             cat = Category.objects.create(category_name=category.lower())
         post = Post.objects.create(category=cat, title=title, description=description,
                              district=district, property_area='', city =city, location_name=location,
-                             price=price, user=request.user
+                             price=price, user=request.user, lat=lat, lng=lng
                              )
         
         img1 = request.FILES.get('image1', '')

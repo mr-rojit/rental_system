@@ -57,7 +57,6 @@ def profile_view(request):
     has_certificate = True if user.certificate else False
         
     posts = Post.objects.filter(user=user)
-    print(posts)
     context = {
         'posts': posts,
         'user': user,
